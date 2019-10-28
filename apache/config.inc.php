@@ -67,6 +67,8 @@ if (!empty($_ENV['PMA_SOCKET'])) {
 /* Server settings */
 for ($i = 1; isset($hosts[$i - 1]); $i++) {
     $cfg['Servers'][$i]['host'] = $hosts[$i - 1];
+    $cfg['Servers'][$i]['ssl_verify'] = false;
+    $cfg['Servers'][$i]['ssl'] = true;
     if (isset($verbose[$i - 1])) {
         $cfg['Servers'][$i]['verbose'] = $verbose[$i - 1];
     }
@@ -130,6 +132,7 @@ $i--;
 /* Uploads setup */
 $cfg['UploadDir'] = '';
 $cfg['SaveDir'] = '';
+$cfg['ForceSSL'] = true;
 
 /* Include User Defined Settings Hook */
 if (file_exists('/etc/phpmyadmin/config.user.inc.php')) {
